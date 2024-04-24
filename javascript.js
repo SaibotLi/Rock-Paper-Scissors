@@ -26,8 +26,9 @@ Else if {P1 < PC console.log("CPU win");}
 Else {console.log("Empate");}
 */
 
+// STEP 1 - Create a console.log and check if everything is okay - CLEAR
 
-// PASO B
+// STEP 2 - Create a getComputerChoice - CLEAR
 
 const options = ["Rock", "Paper", "Scissors"];
 
@@ -37,7 +38,10 @@ return options[storeComputerChoice]; // Return that number into the function
 }
 
 console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
+
+// STEP 3 - Create a getHumanChoice - IN PROGRESS
+
+function getHumanChoice() {
+let choice = prompt("Rock, Papers, Scissors?" " "); // The human can pick between those 3 options, i'll create an error later if he writes anything else
+choice = choice.toLowerCase(); // Case-insensitive
+}
