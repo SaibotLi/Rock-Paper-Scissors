@@ -32,7 +32,7 @@ console.log("Hello, World!");
 
 // STEP 2 - Create a getComputerChoice - CLEAR
 
-const options = ["Rock", "Paper", "Scissors"];
+const options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
 const storeComputerChoice = Math.floor(Math.random() * options.length); // Pick a random number between 0 and 2 which is options.length.
@@ -56,11 +56,28 @@ else {
 }
 }
 
-// STEP 4 - Create humanScore and computerScore
+// STEP 4 - Create humanScore and computerScore - CLEAR
 
 let humanScore = 0, 
 computerScore = 0;
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+// STEP 5 - Write the logic to play a single round - CLEAR
 
+function playRound(humanChoice, computerChoice) {
+if (humanChoice === computerChoice) {
+    console.log("It's a draw!"); // Draw
+}
+else if (humanChoice === "scissors" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "rock" && computerChoice === "scissors") {
+console.log("Player wins!");
+humanScore += 1; // Player 1 scores a point
+}
+else {console.log("CPU wins!");
+computerScore += 1; // CPU scores a point
+}
+console.log(`Computer score is ${computerScore} and player score is ${humanScore}`); // Shows score
+}
+
+let humanSelection = getHumanChoice(); // Stores the player option
+let computerSelection = getComputerChoice(); // Stores the PC option
+
+playRound(humanSelection, computerSelection); // Plays a round
