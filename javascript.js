@@ -28,13 +28,15 @@ Else {console.log("Empate");}
 
 // STEP 1 - Create a console.log and check if everything is okay - CLEAR
 
+console.log("Hello, World!");
+
 // STEP 2 - Create a getComputerChoice - CLEAR
 
 const options = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
 const storeComputerChoice = Math.floor(Math.random() * options.length); // Pick a random number between 0 and 2 which is options.length.
-return options[storeComputerChoice]; // Return that number into the function
+return options[storeComputerChoice]; // Return that number into the function.
 }
 
 console.log(getComputerChoice());
@@ -42,6 +44,16 @@ console.log(getComputerChoice());
 // STEP 3 - Create a getHumanChoice - IN PROGRESS
 
 function getHumanChoice() {
-let choice = prompt("Rock, Papers, Scissors?" " "); // The human can pick between those 3 options, i'll create an error later if he writes anything else
+let choice = prompt("Rock, Papers, Scissors:" ); // The human can write his option, i'll create an error later if he writes anything else.
 choice = choice.toLowerCase(); // Case-insensitive
+if (choice === "rock" || choice === "paper" || choice === "scissors") {
+    return choice; // Return the validated choice.
 }
+else {
+    // If the input is not valid, display an error message and call the prompt again.
+    alert("Please enter Rock, Paper or Scissors.");
+    return getHumanChoice(); // I believe this is called a recursive call, the function will keep calling itself until a valid prompt is met.
+}
+}
+
+// CLEAR, EVERYTHING IS WORKING AS INTENDED! WOOHOO!
