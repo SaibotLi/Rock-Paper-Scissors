@@ -41,7 +41,7 @@ return options[storeComputerChoice]; // Return that number into the function.
 
 console.log(getComputerChoice());
 
-// STEP 3 - Create a getHumanChoice - IN PROGRESS
+// STEP 3 - Create a getHumanChoice - CLEAR
 
 function getHumanChoice() {
 let choice = prompt("Rock, Papers, Scissors:" ); // The human can write his option, i'll create an error later if he writes anything else.
@@ -56,4 +56,11 @@ else {
 }
 }
 
-// CLEAR, EVERYTHING IS WORKING AS INTENDED! WOOHOO!
+// STEP 4 - Create humanScore and computerScore
+
+let humanScore = 0, 
+computerScore = 0;
+
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
