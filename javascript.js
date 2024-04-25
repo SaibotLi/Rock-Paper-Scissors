@@ -65,6 +65,10 @@ computerScore = 0; // Computer score set to 0
 
 
 function playRound(humanChoice, computerChoice) {
+
+    console.log(`Player chose: ${humanChoice}`); // Reminds me what i chose
+    console.log(`Computer chose: ${computerChoice}`); // Lets me see what computer chose
+  
 if (humanChoice === computerChoice) {
     console.log("It's a draw!"); // Draw
 }
