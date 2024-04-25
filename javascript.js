@@ -58,10 +58,11 @@ else {
 
 // STEP 4 - Create humanScore and computerScore - CLEAR
 
-let humanScore = 0, 
-computerScore = 0;
+let humanScore = 0, // Human score set to 0
+computerScore = 0; // Computer score set to 0
 
 // STEP 5 - Write the logic to play a single round - CLEAR
+
 
 function playRound(humanChoice, computerChoice) {
 if (humanChoice === computerChoice) {
@@ -77,7 +78,17 @@ computerScore += 1; // CPU scores a point
 console.log(`Computer score is ${computerScore} and player score is ${humanScore}`); // Shows score
 }
 
-let humanSelection = getHumanChoice(); // Stores the player option
-let computerSelection = getComputerChoice(); // Stores the PC option
+function playGame(rounds) { // rounds parameter let the player choose the amount of rounds instead of a for loop that only goes until 5.
 
+    for (let i = 0; i < rounds; i++) { // Start until we finish the amount of rounds 
+console.log(`Round ${i + 1} out of ${rounds}`);
+let humanSelection = getHumanChoice(); // Stores the player option
+let computerSelection = getComputerChoice();  // Stores the PC option
 playRound(humanSelection, computerSelection); // Plays a round
+    } 
+}
+
+
+// STEP 6 - Create a playGame() function where you can choose how many rounds you play
+
+playGame(5);
