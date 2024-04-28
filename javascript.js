@@ -93,5 +93,14 @@ playRound(humanSelection, computerSelection); // Plays a round
 
 // STEP 6 - Create a playGame() function where you can choose how many rounds you play
 
-playGame(5);
+//Eliminated this step because T.O.P told me to, now im going to continue with the UI
 
+const scissorsButton = document.querySelector("#scissors");
+const paperButton = document.querySelector("#paper");
+const rockButton = document.querySelector("#rock");
+
+rockButton.addEventListener("click", e => {
+   let humanSelection = "rock";
+   let computerSelection = getComputerChoice();
+ console.log(playRound(humanSelection, computerSelection));
+});
