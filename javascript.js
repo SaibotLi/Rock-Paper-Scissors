@@ -102,5 +102,17 @@ const rockButton = document.querySelector("#rock");
 rockButton.addEventListener("click", e => {
    let humanSelection = "rock";
    let computerSelection = getComputerChoice();
- console.log(playRound(humanSelection, computerSelection));
+ playRound(humanSelection, computerSelection);
 });
+
+scissorsButton.addEventListener("click", e => {
+    let humanSelection = "scissors";
+    let computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+ });
+
+ paperButton.addEventListener("click", e => {
+    let humanSelection = "paper";
+    let computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+ });
