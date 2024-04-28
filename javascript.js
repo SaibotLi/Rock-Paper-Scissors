@@ -39,8 +39,6 @@ const storeComputerChoice = Math.floor(Math.random() * options.length); // Pick 
 return options[storeComputerChoice]; // Return that number into the function.
 }
 
-console.log(getComputerChoice());
-
 // STEP 3 - Create a getHumanChoice - CLEAR
 
 function getHumanChoice() {
@@ -96,3 +94,4 @@ playRound(humanSelection, computerSelection); // Plays a round
 // STEP 6 - Create a playGame() function where you can choose how many rounds you play
 
 playGame(5);
+
