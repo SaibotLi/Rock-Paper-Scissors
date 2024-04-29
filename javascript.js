@@ -59,31 +59,76 @@ else {
 let humanScore = 0, // Human score set to 0
 computerScore = 0; // Computer score set to 0
 
-// STEP 5 - Write the logic to play a single round - CLEAR
+ // Function to update results in the results div
+ function updateResults(message) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = message;
+    resultsDiv.appendChild(paragraph);
+ }
 
+ // Function to reset the game
+function resetGame() {
+// Disable buttons during the reset period
+rockButton.disabled = true;
+paperButton.disabled = true;
+scissorsButton.disabled = true;
+
+// Clear the results displayed on the screen after a short delay
+setTimeout(() => {
+    resultsDiv.innerHTML = "";
+    
+    // Re-enable buttons after clearing the results
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
+}, 3000); // Adjust the delay (in milliseconds) as needed
+
+// Reset scores to 0 after a short delay
+setTimeout(() => {
+    humanScore = 0;
+    computerScore = 0;
+
+    // Update the score divs to display the reset scores
+    updatePlayerScore(humanScore);
+    updateComputerScore(computerScore);
+}, 3000); // Adjust the delay (in milliseconds) as needed
+}
+
+// STEP 5 - Write the logic to play a single round - CLEAR
 
 function playRound(humanChoice, computerChoice) {
 
-    console.log(`Player chose: ${humanChoice}`); // Reminds me what i chose
-    console.log(`Computer chose: ${computerChoice}`); // Lets me see what computer chose
+    let message = `Player chose: ${humanChoice}\n`; // Reminds me what i chose
+    message +=`Computer chose: ${computerChoice}\n`; // Lets me see what computer chose
   
 if (humanChoice === computerChoice) {
-    console.log("It's a draw!"); // Draw
+    message += "It's a draw!\n"; // Draw
 }
 else if (humanChoice === "scissors" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "rock" && computerChoice === "scissors") {
-console.log("Player wins!");
-humanScore += 1; // Player 1 scores a point
+message += "Player wins!\n";
+updatePlayerScore(++humanScore);; // Player 1 scores a point
 }
-else {console.log("CPU wins!");
-computerScore += 1; // CPU scores a point
+else {message += "CPU wins!\n";
+updateComputerScore(++computerScore); // CPU scores a point
 }
-console.log(`Computer score is ${computerScore} and player score is ${humanScore}`); // Shows score
+message += `Computer score is ${computerScore} and player score is ${humanScore}\n`; // Shows score
+
+updateResults(message);
+
+    // Check if either player has reached 5 points
+    if (humanScore === 5) {
+        updateResults("Player wins the game!");
+        resetGame(); // Reset the game
+    } else if (computerScore === 5) {
+        updateResults("Computer wins the game!");
+        resetGame(); // Reset the game
+    }
 }
 
 function playGame(rounds) { // rounds parameter let the player choose the amount of rounds instead of a for loop that only goes until 5.
 
     for (let i = 0; i < rounds; i++) { // Start until we finish the amount of rounds 
-console.log(`Round ${i + 1} out of ${rounds}`);
+console.log(`Round ${i + 1} out of ${rounds}\n`);
 let humanSelection = getHumanChoice(); // Stores the player option
 let computerSelection = getComputerChoice();  // Stores the PC option
 playRound(humanSelection, computerSelection); // Plays a round
@@ -98,6 +143,20 @@ playRound(humanSelection, computerSelection); // Plays a round
 const scissorsButton = document.querySelector("#scissors");
 const paperButton = document.querySelector("#paper");
 const rockButton = document.querySelector("#rock");
+const resultsDiv = document.querySelector("#results");
+const scoreDiv = document.querySelector("#score");
+const playerScoreDiv = document.querySelector("#player-score");
+const computerScoreDiv = document.querySelector("#computer-score");
+
+// Function to update player's score
+function updatePlayerScore(score) {
+    playerScoreDiv.textContent = `Player score: ${score}`;
+}
+
+// Function to update computer's score
+function updateComputerScore(score) {
+    computerScoreDiv.textContent = `Computer score: ${score}`;
+}
 
 rockButton.addEventListener("click", e => {
    let humanSelection = "rock";
@@ -116,3 +175,7 @@ scissorsButton.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
   playRound(humanSelection, computerSelection);
  });
+
+ // Add a div for displaying results and change all of your console.log into DOM methods.
+ // Display the running score, and announce a winer of the game once one player reaches 5 points.
+
